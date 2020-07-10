@@ -1,0 +1,218 @@
+<style>
+    .equipment_document div.dataTables_info {
+      right: 600px;
+    }
+    .x-col {
+      max-width: 180px;
+    }
+    .selectedButton {
+      width: 48%;
+      background-color: #00acd6;
+      height: 34px !important;
+      color: #fff;
+      box-shadow: none;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+    .row_bottom {
+      margin-bottom: 10px;
+    }
+    .icon_div {
+      position: relative;
+    }
+    .icon_position {
+      position: absolute;
+      left: 87%;
+      top: 27%;
+    }
+    .btn-right {
+      float: right;
+    }
+    .td_button_default {
+      color: #4D7CFE;
+    }
+    /* 表格居中 */
+    .equipment_document .layui-table th,
+    .equipment_document .layui-table td {
+      text-align: center;
+    }
+    .fix_width {
+      width: 100%;
+    }
+  </style>
+  <div class="equipment_document">
+    <div class="contentHeader">
+      <h3 class="title_style">设备档案</h3>
+      <div >
+        <div class="x-row row_bottom">
+          <div class="x-col">
+            <select class=" searchable-select-holder searchable" id="orgId">
+                <option value="">请选择公司</option>
+            </select>
+        </div>
+        <div class="x-col">
+            <select class=" searchable-select-holder searchable" id="areaId">
+                <option value="">请选择区域</option>
+            </select>
+        </div>
+        <div class="x-col">
+            <select class=" searchable-select-holder" id="projectId">
+                <option value="">请选择项目</option>
+            </select>
+        </div>
+          <div class="x-col">
+            <select class="searchable-select-holder" id="roomId">
+              <option value="">请选择机房</option>
+            </select>
+          </div>
+          <div class="x-col">
+            <div class="icon_div">
+              <input type="text" class="searchable-select-holder" onfocus="dialogType()" placeholder="请查找设备类型" value="" id="type_fix">
+              <i class="layui-icon icon_position" onclick="dialogType()">&#xe615;</i>
+            </div>
+          </div>
+          
+        </div>
+        <div class="x-row">
+            <div class="x-col">
+                <input type="text" id="name" class="searchable-select-holder" placeholder="请填写设备名">
+              </div>
+          <div class="x-col">
+            <input class="searchable-select-holder" id="create_by" placeholder="创建人">
+          </div>
+          <div class="x-col">
+            <div class="icon_div">
+              <input id="beginCreateTime" class="searchable-select-holder" type="text" placeholder="开始时间"  readonly>
+              <i class="layui-icon icon_position">&#xe637;</i>
+            </div>
+          </div>
+          <div class="x-col">
+            <div class="icon_div">
+              <input id="endCreateTime" class="searchable-select-holder" type="text" placeholder="结束时间"  readonly>
+              <i class="layui-icon icon_position">&#xe637;</i>
+            </div>
+            </div>
+          <div class="x-col">
+            <div class="">
+              <button class="btn" onclick="submitForm()">查询</button>
+              <button class="btn btn-right" onclick="equipmentExports()">导出</button>
+            </div>
+          </div>
+          <!-- <div class="x-col"></div> -->
+        </div>
+      </div>
+    </div>
+    <div class="contentTable">
+      <table id="equipTable" class="display table table-striped table-bordered" cellspacing="0" style="width: 100%;">
+      </table>
+    </div>
+
+  </div>
+  <!-- 查看档案 -->
+  <div class="modal bs-example-modal-lg" id="viewFiles" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">查看档案</h4>
+        </div>
+        <div class="modal-body" style="margin-bottom: 30px">
+            <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation" class="active"><a href="#BasicInfor" aria-controls="BasicInfor" role="tab" data-toggle="tab">设备基本信息</a></li>
+              <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">周期任务记录</a></li>
+              <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">设备状态修改记录</a></li>
+            </ul>
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="BasicInfor" style="min-height: 400px;">
+                <div style="float: left;width: 60%">
+                  <table class="display table table-striped" cellspacing="0" width="100%">
+                    <tr>
+                      <td>设备名: <span id="equipmentNameLook"></span></td>
+                      <td>设备编码:<span id="equipmentCodeLook"></span></td>
+                    </tr>
+                    <tr>
+                      <td>品牌:<span id="brandNameLook"></span></td>
+                      <td>型号：<span id="versionNameLook"></span></td>
+                    </tr>
+                    <tr>
+                      <td><p>区域： <span id="areaLook"></span></p>
+                        <p>机房： <span id="roomNameLook"></span></p></td>
+                      <td>项目： <span id="projectLook"></span></td>
+                    </tr>
+                    <tr>
+                      <td><p>质保年份： <span id="yearLook"></span></p>
+                        <p>设备投入使用时间：<span  id="inWorkTimeLook"></span></p></td>
+                      <td>使用状态： <span  id="statusLook"></td>
+                    </tr>
+                    <tr>
+                      <td><p>设备地址：<span id="addressLook"></span></p></td>
+                      <td></td>
+                    </tr>
+                  </table>
+                </div>
+                <div style="float: right;;background-color: #ccc;width: 30%;height: 200px;margin-right: 40px;">
+                  <img src="" id="equipmentPicture" style="width:100%;height:200px;"/>
+                </div>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="profile">
+                <div style="margin-top:10px;">
+                  <div class="x-row">
+                    <div class="x-col">
+                      <input id="beginFinishTime" class="searchable-select-holder" type="text" placeholder="作业完成开始时间"  readonly>
+                    </div>
+                    <div class="x-col">
+                      <input id="endFinishTime" class="searchable-select-holder" type="text" placeholder="作业完成结束时间"  readonly>
+                    </div>
+                    <div class="x-col">
+                      <input type="text" class="inputStyle searchable-select-holder" id="person" placeholder="巡检人">
+                    </div>
+                    <div class="x-col">
+                      <div class="">
+                        <button class="btn" onclick="searchForm()">查询</button>
+                        <button class="btn btn-right" onclick="exportTask()">导出</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <table id="periodicTask" class="display table table-striped table-bordered" cellspacing="0" width="100%">
+                </table>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="messages">
+                <table id="equipmentStatus" class="display table table-striped table-bordered" cellspacing="0" style="width: 100%;">
+                </table>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- 设备类型选择 -->
+<div class="modal" id="selecttype" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">设备类型</h4>
+      </div>
+      <div class="modal-body">
+        <div>
+          <span style="font-size: x-large;">选择类型</span>
+          <button type="button" class="btn" data-dismiss="modal" style="background-color: #fff;color: #999999;float: right;margin-left: 5px">
+            返回
+          </button>
+          <button type="button" class="btn btn-info" style="float: right" onclick="secetion()" data-dismiss="modal">
+            选择
+          </button>
+        </div>
+        <!-- treeTable -->
+        <table id="table3" class="layui-table" lay-filter="table3"></table>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/html" id="barDemo">
+  <a class="td_button_default" onclick='viewFile({{JSON.stringify(d)}})'>查看</a>
+</script>
+  <script src="/integration-admin/common/equipment/equipment.js"></script>
+
+

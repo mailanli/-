@@ -1,0 +1,138 @@
+<style>
+  .modal {
+    top: 150px
+  }
+
+  .labText {
+    width: 43%;
+    margin-right: 4px;
+  }
+
+  #fileList {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  #fileList p {
+    margin-bottom: 10px;
+  }
+
+  .filename {
+    margin-right: 20px;
+  }
+
+  .labText1 {
+    width: 10%;
+  }
+
+  .title_dialog {
+    font-size: 16px;
+    color: #6a809d;
+    font-weight: 600;
+    line-height: 22px;
+  }
+
+  .btn_a {
+    color: #A9A6AB;
+    float: right;
+    cursor: pointer;
+    margin-right: 20px;
+  }
+
+  .btn_img {
+    float: right;
+    cursor: pointer;
+    padding-top: 3px;
+    margin-right: 2px;
+  }
+
+  .td_button_default {
+    color: #4D7CFE;
+  }
+
+  .btn_right {
+    margin-right: 10px;
+  }
+
+  /* 表格居中 */
+  .contentTable .layui-table th,
+  .contentTable .layui-table td {
+    text-align: center;
+  }
+</style>
+<div>
+  <div class="contentHeader">
+    <h3 class="title_style">供应商查询</h3>
+    <div class="wrap-row">
+      <div class="wrap-col">
+        <input class="searchable-select-holder" id="name" placeholder="请输入供应商/信用代码">
+      </div>
+      <div class="wrap-col">
+        <div class="btn-col">
+          <button class="btn fr" onclick="resetForm()">重置</button>
+          <button class="btn fr" onclick="search()">查询</button>
+        </div>
+      </div>
+      <div class="wrap-col">
+
+      </div>
+      <div class="wrap-col">
+
+      </div>
+      <div class="wrap-col">
+
+      </div>
+    </div>
+  </div>
+  <div class="contentTable">
+    <div style="height: 20px;padding-top: 15px;">
+      <span class="btn_a bgy-export-btn" onclick="exports()">导出</span>
+      <img class="btn_img bgy-export-btn" src="/integration-admin/images/export.png" onclick="exports()" alt="导出">
+      <span class="btn_a bgy-add-btn" onclick="add()">添加</span>
+      <img class="btn_img bgy-add-btn" src="/integration-admin/images/add.png" onclick="add()" alt="添加">
+    </div>
+    <table id="companyTables" class="display table table-striped table-bordered" cellspacing="0" width="100%">
+    </table>
+  </div>
+</div>
+<!-- 删除提示框 -->
+<div class="modal bs-example-modal-sm" id="delete" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title title_dialog" id="myModalLabel">提示</h4>
+      </div>
+      <div class="modal-body">
+        是否删除
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" onclick="deleteSure()">确定</button>
+        <button type="button" class="btn" data-dismiss="modal" style="background-color: #fff;color: #999999">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 禁用提示框 -->
+<div class="modal bs-example-modal-sm" id="stop" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title title_dialog" id="myModalLabel">提示</h4>
+      </div>
+      <div class="modal-body">
+        是否禁用
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" onclick="stopSure()">确定</button>
+        <button type="button" class="btn" data-dismiss="modal" style="background-color: #fff;color: #999999">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" language="javascript"
+  src="/integration-admin/plugins/dataTables/jquery.dataTables.min.js"></script>
+<script src="/integration-admin/common/contract/companyManage/companyManage.js"></script>

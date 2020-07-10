@@ -1,0 +1,57 @@
+<style>
+
+
+
+.column.over {
+
+border: 3px dashed #000;
+
+}
+    /* .tipGroup>span{width: 100px; height: 35px;} */ */
+</style>
+<div id="equipment">
+    <div class="contentHeader">
+        <div class="wrap-row">
+            <div class="wrap-col">
+                <label for="basedistrict" class="wrap-label">苑区</label>
+                <select class="inputStyle searchable-select-holder" id="basedistrict">
+                    <option value="">请选择</option>
+                </select></div>
+            <div class="wrap-col">
+                <label for="street" class="wrap-label">街道</label>
+                <select class="inputStyle searchable-select-holder" id="street">
+                    <option value="">请选择</option>
+                </select>
+            </div>
+            <div class="wrap-col"><label for="building" class="wrap-label">楼栋</label> <select
+                    class="inputStyle searchable-select-holder" id="building">
+                    <option value="">请选择</option>
+                </select></div>
+            <div class="wrap-col"><label for="unity" class="wrap-label">单元</label> <select
+                    class="inputStyle searchable-select-holder" id="unity">
+                    <option value="">请选择</option>
+                </select></div>
+            <!-- <div class="wrap-col"><label for="room" class="wrap-label">机房</label> <select
+                    class="inputStyle searchable-select-holder" id="room">
+                    <option value="">请选择</option>
+                </select></div>
+            <div class="wrap-col"><input class="inputStyle searchable-select-holder" id="equipmentName"
+                    placeholder="请输入设备名"></div> -->
+            <div class="wrap-col"><button class="btn" id="submitFormEquipment">查询</button><button class="btn sbtn fr"
+                    onclick="resetSearchPoint()">重置</button></div>
+        </div>
+    </div>
+    <div id="foo"></div>
+    <div class="tipGroup boxList" id="columns">
+        <button class="btn addBtn" id="clearAllTip" onclick="clearAllTip(this)">全部清除</button>
+    </div>
+    <div class="contentTable pointPag" >
+        <table id="subTablePoint" lay-filter="test" class="display table table-striped table-bordered" cellspacing="0"
+            style="width:100%"></table>
+    </div>
+</div>
+<script type="text/html" id="viewMap">
+    <a class="td_button_default btn-right" onclick='viewMap("{{d.locationStr}}")'>查看</a>
+  </script>
+  <script src="/integration-admin/common/patrol/tdrag.js"></script>
+<!-- <script src="/integration-admin/common/patrol/point.js"></script> -->

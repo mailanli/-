@@ -1,0 +1,134 @@
+<style>
+  .computer_manage div.dataTables_info {
+      right: 600px;
+    }
+    .x-col {
+      max-width: 180px;
+      margin-right: 8px;
+    }
+    .x-row{position: relative;}
+  .searchFrom .btn{margin-right: 5px}
+    .btn_a {
+      color: #A9A6AB;
+      float: right;
+      cursor: pointer;
+      margin-right: 20px;
+    }
+    .btn_img {
+      float: right;
+      cursor: pointer;
+      padding-top: 3px;
+      margin-right: 2px;
+    }
+    .td_button_default {
+      color: #4D7CFE;
+    }
+    .btn_right {
+      margin-right: 20px;
+    }
+    .row_bottom {
+      margin-bottom: 10px;
+    }
+    /* 表格居中 */
+    .computer_manage .layui-table th,
+    .computer_manage .layui-table td {
+      text-align: left;
+    }
+    .diolag_title {
+      font-size: 16px;
+      color: #6a809d;
+      font-weight: 600;
+      line-height: 22px;
+    }
+    .subName {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .sub,textarea{
+      width:-moz-calc(100% - 65px);
+      width:-webkit-calc(100% - 65px);
+      width: calc(100% - 65px);
+    }
+    #equipment{overflow: hidden;}
+    select.tableSelect {
+      width: 82%;
+      padding: 0px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      min-height: 30px;
+      box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+      display: block;
+    }
+    .mapArea{width: 100%; height: 450px;}
+</style>
+<div class="computer_manage addPage">
+  <div class="contentHeader searchFrom">
+      <div class="header">
+          <h3 class="title_style">线路维护</h3>
+          <div class="btnGroup">
+            <button type="button" class="btn addBtn" onclick="patrolObjectSave()">保存</button>
+            <button type="button" class="btn noMargin" onclick="goBack()">返回</button>
+          </div>
+      </div>
+      <div class="x-row row_bottom " style="width:80%">
+          <div class="x-col">
+              <input type="hidden" id="patrolId" />
+            <div class="labText"><span style="color:red">*</span>巡逻名</div>
+            <input type="text" id="name"  class="searchable-select-holder"/>
+          </div>
+      </div>
+      <div class="x-row row_bottom "  style="width:80%">
+          <div class="x-col">
+            <div class="labText"><span style="color:red">*</span>公司</div>
+            <select class="searchable-select-holder searchable selectArea" id="org">
+              <option value="">请选择公司</option>
+            </select>
+          </div>
+          <div class="x-col">
+            <div class="labText"><span style="color:red">*</span>区域</div>
+            <select class="searchable-select-holder searchable selectArea" id="area">
+              <option value="">请选择区域</option>
+            </select>
+          </div>
+          <div class="x-col">
+            <div class="labText"><span style="color:red">*</span>项目</div>
+            <select class="searchable-select-holder searchable selectArea" id="project">
+              <option value="">请选择项目</option>
+            </select>
+          </div>
+        </div>
+      <div class="x-row row_bottom "  style="width:80%">
+          <div class="x-col">
+            <div class="labText"><span style="color:red">*</span>业务分类</div>
+            <select class="searchable-select-holder searchable selectArea" id="standardTypeId">
+              <option value="">请选择业务分类</option>
+            </select>
+          </div>
+          <div class="x-col">
+            <div class="labText"><span style="color:red">*</span>业务标准</div>
+            <select class="searchable-select-holder searchable selectArea" id="standardManageId">
+              <option value="">请选择业务标准</option>
+            </select>
+          </div>
+          <div class="x-col">
+            
+          </div>
+        </div>
+        <div id="descriptions" style="width:80%"></div>
+        <div class="line"></div>
+        <div class="x-row row_bottom" style="width:80%">
+          <div ><span > *巡查点选择（巡查点将勾选次序排列）</span></div>
+        </div>
+        <div class="x-row row_bottom" style="width:80%">
+          <div class="x-col" style="width:80%" id="pointList">
+            
+        </div>
+  </div>
+</div>
+</div>
+<div id="pointMaps"></div>
+<script src="/integration-admin/common/patrol/clean/patrolObjectAdd.js"></script>

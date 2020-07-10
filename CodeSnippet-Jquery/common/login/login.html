@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <head lang="en">
+        <meta charset="UTF-8">
+        <link rel="shortcut icon" href="/integration-admin/favicon.ico" type="image/x-icon" charset="UTF-8">
+        <title>智联集成平台</title>
+        <link rel="stylesheet" type="text/css" href="/integration-admin/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/integration-admin/plugins/layui/css/layui.css">
+        <link rel="stylesheet" type="text/css" href="/integration-admin/css/form.css">
+        <style>
+            body {
+            overflow-y: hidden !important;
+        }
+
+        .window {
+            width: 100%;
+            height: 100%;
+        }
+
+        * {
+            margin: 0;
+        }
+
+        .form-container {
+            width: 498px;
+            height: 360px;
+            overflow: hidden;
+            background-color: rgb(255, 255, 255);
+            margin: 0;
+            position: fixed;
+        }
+
+        .mainContainer {
+            margin-top: 30px;
+        }
+
+        .login-hd {
+            height: 60px;
+            line-height: 36px;
+            text-align: center;
+        }
+
+        .form-group {
+            width: 300px;
+            height: 44px;
+            margin-left: -15px;
+            margin-right: -15px;
+            margin-bottom: 15px;
+        }
+
+        .input-group {
+            position: relative;
+            display: table;
+            border-collapse: separate;
+            display: flex;
+        }
+
+        .form-control {
+            width: 203px;
+            height: 16px;
+            padding: 8px 12px;
+            border: 1px solid #d2d6de;
+            outline: none;
+        }
+
+        .form-control:focus {
+            border-color: #3c8dbc;
+            box-shadow: none;
+        }
+
+        .input-group-addon {
+            display: block;
+            width: 30px;
+            height: 16px;
+            padding: 8px 12px;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 1;
+            color: #555555;
+            text-align: center;
+            border-radius: 0;
+            background-color: #fff;
+            border: 1px solid #d2d6de;
+            white-space: nowrap;
+        }
+
+        .input-group-addon:first-child {
+            border-right: 0;
+        }
+
+        .glyphicon {
+            position: relative;
+            display: inline-block;
+            font-family: 'Glyphicons Halflings';
+            font-style: normal;
+            font-weight: normal;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            width: 14px;
+            height: 14px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .forget {
+            width: 283px;
+            height: 33px;
+            line-height: 33px;
+            font-size: 14px;
+        }
+
+        .forget-password {
+            color: #2fa4e7;
+            float: right;
+        }
+
+        .forget-password:hover {
+            color: #157ab5;
+        }
+
+        .clearfix:before {
+            clear: both;
+            content: "";
+            display: block;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .click-login {
+            width: 300px;
+            height: 40px;
+            background: rgb(56, 131, 255);
+            outline: none;
+            border: 0;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 3px;
+        }
+
+        .click-login:hover {
+            background: rgb(77, 144, 255)
+        }
+
+        .x-row {
+            display: flex;
+            padding: 5px;
+            width: 100%;
+        }
+
+        .x-col {
+            -webkit-box-flex: 1;
+            flex: 1;
+            display: block;
+            padding: 5px;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        input[type="checkbox"] {
+            margin: 4px 0 0;
+            line-height: normal;
+            box-sizing: border-box;
+            padding: 0;
+        }
+
+        .new-reg {
+            color: #2fa4e7;
+        }
+
+        .loginlogo {
+            position: fixed;
+            top: 3.4%;
+            left: 5%;
+        }
+
+        img {
+            vertical-align: middle;
+        }
+
+        .form-group > *, .form-group > * > *, .form-group > * > * > * {
+            height: 100%;
+            line-height: 25px;
+        }
+
+        .form-group input {
+            border-left: none;
+        }
+    </style>
+    </head>
+    <div class="window">
+        <div class="loginbg">
+            <img src="/integration-admin/images/loginbg.png" alt="" style="width: 100%">
+        </div>
+        <div class="loginlogo">
+            <img src="/integration-admin/images/loginlogo.png" alt="">
+        </div>
+        <div class="form-container" style="top:17%;right:8.6%;width: 400px;height: 360px;">
+            <div class="mainContainer">
+                <div class="login-hd" style="font-size:1.7em;">智能物联统一集成平台</div>
+                <div class="form-horizontal ng-pristine ng-valid" style="width: 92%;margin-left: 17%;">
+                    <div class="form-group">
+                        <div class="input-group" style="margin-top: 10px;">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-user">
+
+                                </span>
+                            </span>
+                            <input class="form-control" id="acount" placeholder="请输入账号" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-lock">
+
+                                </span>
+                            </span>
+                            <input class="form-control" type="password" id="password" placeholder="请输入密码">
+                        </div>
+                    </div>
+                    <div class="clearfix forget">
+                        <span class="forget-password" style="cursor: pointer;" onclick="updatePassword()">忘记密码</span>
+                    </div>
+                    <div class="form-group denglu">
+                        <button onclick="login()" class="click-login">登陆</button>
+                    </div>
+                    <!--<div class="x-row clearfix">
+                        <div class="x-col x-col-center">
+                            <input type="checkbox">
+                            <label class="login-once">自动登录</label>
+                        </div>
+                        <div class="x-col x-col-center">
+                            <a href="">
+                                <span class="new-reg">
+                                    新用户注册
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 修改密码 -->
+    <div class="modal" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document" style="margin-top:8%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">忘记密码</h4>
+                </div>
+                <div class="modal-body" style="position: relative;overflow: auto">
+                    <div class="list-group">
+                        <div class="panel-body">
+                            <div class="x-row">
+                                <div class="x-col">
+                                    <input type="text" class="inputStyle searchable-select-holder abbreviation" id="user"
+                                        placeholder="账号" style="margin-left: 20%;width: 60%;">
+                                </div>
+                            </div>
+                            <div class="x-row">
+                                <div class="x-col">
+                                    <input type="tel" class="inputStyle searchable-select-holder companyCode"
+                                        placeholder="请输入短信验证码" id="code" style="width:30%;margin-left: 20%;">
+                                    <button onclick="sendMessage()" class="btn" style="float:right;margin-right:20%;"
+                                        id="sendMsg">获取验证码</button>
+                                </div>
+                            </div>
+                            <div class="x-row">
+                                <div class="x-col">
+                                    <!-- <div class="labText">新密码</div> -->
+                                    <input type="password" class="inputStyle searchable-select-holder companyAddress"
+                                        placeholder="请输入新密码" id="newPassword" style="margin-left: 20%;width: 60%;">
+                                </div>
+                            </div>
+                            <div class="x-row">
+                                <div class="x-col">
+                                    <!-- <div class="labText">确认密码</div> -->
+                                    <input type="password" class="inputStyle searchable-select-holder linePerson"
+                                        placeholder="请再次输入新密码" id="submitPassword" style="margin-left: 20%;width: 60%;">
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-left: 30%;">
+                            <button type="button" class="btn" onclick="savePassword()">保存</button>
+                            <button type="button" class="btn" data-dismiss="modal" style="margin-left: 40px">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/integration-admin/js/jquery-1.11.1.min.js"></script>
+    <script src="/integration-admin/js/jquery.md5.js"></script>
+    <script src="/integration-admin/plugins/layui/layui.all.js"></script>
+    <script src="/integration-admin/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="/integration-admin/common/common.js"></script>
+    <script>
+        function login() {
+            if (!$('#acount').val()) {
+              layer.msg('请输入账号')
+              return false
+            }
+            if (!$('#password').val()) {
+              layer.msg('请输入密码')
+              return false
+            }
+            var param = {
+                "autologin": 0,
+                "password": $.md5($('#password').val()),
+                "telephone": $('#acount').val()
+            }
+            $.adapter_post(param, "auth/login", function (data) {
+                if (data.status == '1') {
+                    window.sessionStorage.setItem('userName', data.data.userName);
+                    window.sessionStorage.setItem('user', data.data.telephone)
+                    window.sessionStorage.setItem('token', data.data.accessToken)
+                    location.href = '/'
+                } else {
+                    layer.msg(data.msg)
+                }
+            })
+        }
+
+        $(document).ready(function () {
+            $('.form-control').on({
+                focus: function (e) {
+                    $(e.target).prev().css('border-color', '#3c8dbc')
+                },
+                blur: function (e) {
+                    $(e.target).prev().css('border-color', '#d2d6de')
+                }
+            })
+        })
+
+        function updatePassword() {
+            $('input:password').val('')
+            $('#user').val($('#acount').val().trim());
+            $('#loginModal').modal();
+        }
+
+        function sendMessage() {
+            if ($('#user').val() == '' || $('#user').val().length != 11) {
+                layer.msg('请输入正确账号')
+                return
+            }
+            var that = this;
+            that.time = 60;
+            $.adapter_post({ 'telephone': $('#user').val().trim() }, 'sms/sendIdentifyCode', function (d) {
+                if (d.status == 1) {
+                    that.interval = setInterval(function () {
+                        if (that.time == 60) {
+                            $('#sendMsg').attr('disabled', 'disabled');
+                        } else if (that.time == 0) {
+                            clearInterval(that.interval)
+                            $('#sendMsg').removeAttr('disabled').text('获取验证码');
+                            return
+                        }
+                        that.time--
+                        $('#sendMsg').text(that.time)
+                    }, 1000)
+                } else {
+                    layer.msg(d.msg)
+                }
+            })
+        }
+
+        function savePassword() {
+            if ($('#user').val() == '' || $('#user').val().length != 11) {
+                layer.msg('请输入正确账号')
+                return
+            }
+            if ($('#newPassword').val() == '' || $('#submitPassword').val() == '') {
+                layer.msg('请输入新密码')
+                return
+            }
+            if ($('#newPassword').val() != $('#submitPassword').val()) {
+                layer.msg('两次密码输入不一致')
+                return
+            }
+            if ($('#code').val() == '') {
+                layer.msg('验证码不能为空')
+                return
+            }
+            var param = {
+                'telephone': $('#user').val(),
+                'password': $.md5($('#newPassword').val()),
+                'msgCode': $('#code').val().trim()
+            }
+            $.adapter_put(param, 'user/forgetPwd', function (d) {
+                if (d.status == 1) {
+                    $('#loginModal').modal('hide');
+                } else {
+                    layer.msg(d.msg)
+                }
+            })
+        }
+        function tiplog(msg) {
+
+        }
+        $(function () {
+            $("#password").keydown(function (event) {
+                if (event.keyCode == 13) {
+                    login()
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

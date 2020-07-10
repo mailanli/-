@@ -1,0 +1,50 @@
+<style>
+  .modal{
+    top: 150px
+  }
+  .areaStyle {
+    width: 70%;
+    height: 100px;
+  }
+  .day {
+    line-height: 35px;
+    margin-left: 5px;
+  }
+  .x-row{ margin-bottom: 10px;}
+  .labText { flex-shrink: 1; width: auto;}
+  </style>
+<div class="contract-addReminder contentHeader">
+    <h1>提醒设置</h1>
+    <div class="x-row">
+      <div class="x-col">
+        <div class="labText"><span style="color:red">*</span>提醒类型</div>
+        <select class="inputStyle searchable-select-holder searchable" id="remindType">
+          <option value="">请选择</option>
+          <option value="2">年检申报</option>
+          <option value="1">合同到期</option>
+        </select>
+      </div>
+      <div class="x-col">
+        <div class="labText"><span style="color:red">*</span>提前期</div>
+        <input class="inputStyle searchable-select-holder" id="remindAdvance">
+        <span class="day">天</span>
+      </div>
+      <div class="x-col">
+        <div class="labText"><span style="color:red">*</span>截止时间</div>
+        <input id="remindTime" class="inputStyle searchable-select-holder" type="text" placeholder="请选择"  readonly>
+      </div>
+      <div class="x-col"></div>
+    </div>
+    <div class="x-row">
+      <div class="labText">提醒内容</div>
+      <textarea  class="inputStyle searchable-select-holder areaStyle" id="content"></textarea>
+    </div>
+    <div class="x-row">
+      <div style="margin-left: 15%;margin-top: 10px;">
+        <button type="button" class="btn" onclick="save()">保存</button>
+        <button type="button" class="btn" style="margin-left: 40px" onclick="goBack()">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/integration-admin/common/contract/addReminder/addReminder.js"></script>

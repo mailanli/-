@@ -1,0 +1,431 @@
+<style>
+  .computer_manage div.dataTables_info {
+    right: 600px;
+  }
+
+  .x-col {
+    max-width: 180px;
+  }
+
+  .btn_a {
+    color: #A9A6AB;
+    float: right;
+    cursor: pointer;
+    margin-right: 20px;
+  }
+
+  .btn_img {
+    float: right;
+    cursor: pointer;
+    padding-top: 3px;
+    margin-right: 2px;
+  }
+
+  .td_button_default {
+    color: #4D7CFE;
+  }
+
+  .btn_right {
+    margin-right: 20px;
+  }
+
+  .row_bottom {
+    margin-bottom: 10px;
+  }
+
+  /* 表格居中 */
+  .computer_manage .layui-table th,
+  .computer_manage .layui-table td {
+    text-align: center;
+  }
+
+  .diolag_title {
+    font-size: 16px;
+    color: #6a809d;
+    font-weight: 600;
+    line-height: 22px;
+  }
+
+  .subName {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .intro-row {
+        overflow: hidden;
+        background: #fff;
+        margin-bottom: 1%;
+        padding: 18px 23px;
+    }
+
+    .intro-row .intro-cont{
+        overflow: hidden;
+        width: 100%;
+        background: #f3f3f3;
+        padding: 10px 0;
+        text-align:center;
+    }
+    .intro-row .intro-cont .no-pro-tip{
+        display:inline-block;
+        padding:15px 0;
+        color:#333c48
+    }
+    .intro-row .intro-cont .no-pro-tip img{ margin-right: 10px;}
+    .intro-row .intro-cont dl{
+        float: left;
+        width: 50%;
+        text-align: center
+    }
+    .intro-row .intro-cont dl dd{
+        font-size: 24px;
+        font-weight: 700;
+        color:#4286f6
+    }
+    .intro-row .intro-cont dl dt{
+        color:#333c48
+    }
+    .intro-row .intro-cont dl:first-child{
+        border-right:1px solid #bfbfbf;
+    }
+    .layui-table-main::-webkit-scrollbar-track-piece,
+    .classify-container::-webkit-scrollbar-track-piece {
+        background-color: #fff;
+    }
+
+    .layui-table-main::-webkit-scrollbar,
+    .classify-container::-webkit-scrollbar {
+        width: 7px;
+        height: 7px;
+    }
+
+    .layui-table-main::-webkit-scrollbar-thumb,
+    .classify-container::-webkit-scrollbar-thumb {
+        background-color: #ccc;
+        background-clip: padding-box;
+    }
+
+    .layui-table-main::-webkit-scrollbar-thumb:hover,
+    .classify-container::-webkit-scrollbar-thumb:hover {
+        background-color: #888;
+    }
+
+    .line-title {
+        margin-bottom: 18px;
+        padding-left: 10px;
+        font-size: 16px;
+        line-height: 16px;
+        font-weight: 700;
+        color: #333;
+        border-left: 2px solid #4286f6;
+    }
+
+    .emp{ font-weight: 700; color:#4286f6}
+
+    #resultDetails {
+        /* display: none; */
+        color:#585860;
+    }
+
+    #resultDetails .title_style {
+        float: left;
+        margin-top: 20px;
+    }
+
+    #resultDetails .header {
+        overflow: hidden;
+        background: #fff;
+        margin-bottom: 1%;
+        padding: 0 23px;
+    }
+
+    #resultDetails .header .back {
+        float: right;
+        margin-top: 14px;
+        width: 100px;
+        height: 32px;
+        line-height: 32px;
+    }
+
+    #resultDetails .header .back:hover {
+        border-color: #6a809d
+    }
+
+    #resultDetails .intro-row {
+        overflow: hidden;
+        background: #fff;
+        margin-bottom: 1%;
+        padding: 18px 23px;
+    }
+
+    #resultDetails .intro-row .intro-cont{
+        overflow: hidden;
+        width: 100%;
+        background: #f3f3f3;
+        padding: 10px 0;
+        text-align:center;
+    }
+    #resultDetails .intro-row .intro-cont .no-pro-tip{
+        display:inline-block;
+        padding-top:115px;
+        color:#333c48
+    }
+    #resultDetails .intro-row .intro-cont .no-pro-tip img{ margin-right: 10px;}
+    #resultDetails .intro-row .intro-cont dl{
+        float: left;
+        width: 50%;
+        text-align: center
+    }
+    #resultDetails .intro-row .intro-cont dl dd{
+        font-size: 24px;
+        font-weight: 700;
+        color:#4286f6
+    }
+    #resultDetails .intro-row .intro-cont dl dt{
+        color:#333c48
+    }
+    #resultDetails .intro-row .intro-cont dl:first-child{
+        border-right:1px solid #bfbfbf;
+    }
+
+
+    #resultDetails .score-row {
+        text-align: center;
+        padding: 15px 0 0;
+        font-weight: 700;
+        color: #4D7CFE;
+    }
+
+    #resultDetails .image-row {
+        margin-top: 15px;
+    }
+
+    #resultDetails .image-row img {
+        width: 100px;
+        max-height: 100px;
+        background: gray;
+        margin-right: 20px;
+    }
+
+    #resultDetails .btn {
+        display: block;
+        margin: 0 auto
+    }
+
+    #resultDetails .suggest-row {
+        margin-top: 20px;
+    }
+
+    #resultDetails .layui-table-view .layui-table td {
+        position: relative;
+    }
+
+    #resultDetails tbody .layui-table-cell {
+        height: auto;
+        white-space: initial;
+    }
+
+    #resultImages .modal-content {
+        position: relative;
+        width: auto;
+        height: 80%;
+        background: transparent;
+        margin: 0 auto;
+    }
+
+    #resultImages .modal-content .imgclose {
+        position: absolute;
+        right: -163px;
+        top: -48px;
+        display: block;
+        width: 100px;
+        height: 32px;
+        line-height: 32px;
+        background: #4286f6;
+        border-radius: 3px;
+        color: #fff;
+        text-align: center;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    #resultImages img {
+        display: block;
+        max-width: 1000px;
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    #resultDetails .layui-table tbody tr:hover,
+    #resultDetails tr.layui-table-hover {
+        background: #fff !important;
+    }
+    #resultDetails .wrap_calssfies{
+        position: relative;
+    }
+    #resultDetails .classify {
+        position: absolute;
+        right: 23px;
+        top:12px;
+        height: 20px;
+        overflow: hidden;
+    }
+    #resultDetails .classify-tips{
+        position: absolute;
+        right: 24px;
+        top: 17px;
+        width: 13px;
+        height: 16px;
+        padding: 0 5px;
+    }
+    #resultDetails .classify-tips .dot{
+        display: block;
+        width: 100%;
+        height: 3px;
+        background: #333c48;
+        margin: 2px 0;
+    }
+    #resultDetails .classify-item {
+        border-bottom: 1px solid #ddd;
+        padding: 15px 23px 25px;
+    }
+
+    #resultDetails .classify-container{
+        background: #fff;
+    }
+    #resultDetails .classify-container div:last-child {
+        border-bottom: 0;
+    }
+
+    #resultDetails .layui-form-radio{
+        margin-top: 0!important;
+    }
+    #resultDetails .layui-form-radio>i:hover,
+    .layui-form-radioed>i {
+        color: #4D7CFE
+    }
+
+    #resultDetails .table-cell-text-control {
+        margin-left: 10px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #e6e6e6;
+        content: "\e61a";
+        font-size: 14px;
+        color: #999;
+    }
+
+    #resultDetails .table-cell-text-control:hover {
+        box-shadow: none;
+        color: #4D7CFE;
+    }
+
+    .layui-layer-dialog .layui-layer-content {
+        padding: 10px 10px 0 10px;
+        height: 100% !important;
+    }
+
+    #resultDetails .layui-form-radio>i {
+        font-size: 14px;
+        margin-right: 5px!important;
+    }
+    #resultDetails .layui-form-radio *{
+        font-size: 12px;
+    }
+    .classify-clone-wrap {
+        width: 290px!important;
+        padding:0 10px; 
+        box-sizing: border-box;
+    }
+    .classify-clone-wrap .arrow{
+        display: block;
+        position: absolute;
+        right: 10px;
+        top: -16px;
+        z-index: 100;
+        width: 0;
+        height: 0;
+        border-color:  transparent transparent #fff transparent ;
+        border-style: solid;
+        border-width: 8px;
+    }
+    .classify-clone-wrap .arrow2{
+        content: '';
+        display: block;
+        position: absolute;
+        right: 10px;
+        top: -17px;
+        z-index: 99;
+        width: 0;
+        height: 0;
+        border-color:  transparent transparent #ccc transparent ;
+        border-style: solid;
+        border-width: 8px;
+    }
+
+    .layui-form-radio{
+        margin-right: 0px!important;
+        padding:0 6px!important;
+    }
+    .classify-clone-wrap .layui-form-radio>i {
+        font-size: 14px;
+        margin-right: 5px!important;
+    }
+
+    .classify-clone-wrap .layui-form-radio *{
+        font-size: 12px!important;
+    }
+    .layui-table td, .layui-table th{ text-align: center}
+    .nomsg{text-align: center; font-size: 24px;  padding:100px 0;}
+    .radioBox{position: absolute; top: 100px !important;}
+</style>
+<div class="computer_manage listPag">
+  <div class="contentHeader searchFrom viewTableSearch">
+    <!-- <h3 class="title_style">检查详情</h3> -->
+    <div>
+      <div class="x-row row_bottom">
+        <div class="x-col">
+          <select class=" searchable-select-holder searchable" id="orgIdV">
+            <option value="">请选择公司</option>
+          </select>
+        </div>
+        <div class="x-col">
+          <select class="searchable-select-holder" id="areaIdV">
+            <option value="">请选择区域</option>
+          </select>
+        </div>
+        <div class="x-col">
+          <select class="searchable-select-holder" id="projectIdV">
+            <option value="">请选择项目</option>
+          </select>
+        </div>
+        <div class="x-col">
+          <button class="btn" onclick="submitForm()">查询</button>
+          <button class="btn noMargin" onclick="resetFormV()">重置</button>
+          <button type="button" class="btn noMargin" onclick="handleGoBack()">返回</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="contentTable" >
+    <div id="resultDetails">
+        <div class="resultDetailsBody">
+            <!-- <div class="intro-row">
+                <div class="intro-cont" id="scoreCon">
+                    <dl>
+                        <dd id="projectScore">98</dd>
+                        <dt>总得分</dt>
+                    </dl>
+                    <dl>
+                        <dd id="classifyScore">100</dd>
+                        <dt>客服分值</dt>
+                    </dl>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <table id="detailsTable" class="display table table-striped table-bordered" cellspacing="0" style="width:100%">
+    </table>
+  </div>
+
+  <script src="/integration-admin/common/checkManage/inspectionDetails/inspectionDetailViewTable.js"></script>

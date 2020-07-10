@@ -1,0 +1,199 @@
+<style>
+  .modal {
+    top: 150px
+  }
+
+  .labText {
+    width: 100%;
+    text-align: left;
+    line-height: 40px;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  #fileList p {
+    margin-bottom: 10px;
+  }
+
+  #fileList button {
+    margin-right: 10px;
+  }
+
+  .filename {
+    margin-right: 20px;
+  }
+
+  p {
+    line-height: 32px;
+  }
+
+  .form-control {
+    width: 100%;
+  }
+
+  .delete_file {
+    display: none;
+  }
+</style>
+<div class="contract-add-form contentHeader">
+  <h1 id="title" class="title_style">合同修改</h1>
+  <div class="x-row">
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>所属公司</div>
+      <div id="org_select">
+        <select class="searchable-select-holder searchable" id="orgEdit">
+          <option value="">请选择</option>
+        </select>
+      </div>
+      <input type="text" class="searchable-select-holder form-control hide" id="orgName" disabled>
+    </div>
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>所属区域</div>
+      <div id="area_select">
+        <select class="searchable-select-holder searchable" id="areaEdit">
+          <option value="">请选择</option>
+        </select>
+      </div>
+      <input type="text" class="searchable-select-holder form-control hide" id="areaName" disabled>
+    </div>
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>所属项目</div>
+      <div id="project_select">
+        <select class="searchable-select-holder searchable form-control" id="projectEdit">
+          <option value="">请选择</option>
+        </select>
+      </div>
+      <input type="text" class="searchable-select-holder form-control hide" id="projectName" disabled>
+    </div>
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>合同名称</div>
+      <input class="searchable-select-holder form-control" id="nameEdit">
+    </div>
+  </div>
+  <div class="x-row">
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>业务分类</div>
+      <div id="type_select">
+        <select class="searchable-select-holder searchable form-control" id="typeEdit">
+          <option value="">请选择</option>
+        </select>
+      </div>
+      <input type="text" class="form-control searchable-select-holder hide" id="typeName" disabled>
+    </div>
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>合同业务</div>
+      <div id="contractType_select">
+        <select class="searchable-select-holder searchable" id="contractType">
+          <option value="">请选择</option>
+          <option value="1">消防</option>
+          <option value="2">电梯</option>
+        </select>
+      </div>
+      <input type="text" class="searchable-select-holder form-control hide" id="contractTypeShow" disabled>
+    </div>
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>业务供应商</div>
+      <div id="company_select">
+        <select class="searchable-select-holder searchable form-control" id="companyName">
+          <option value="">请选择</option>
+        </select>
+      </div>
+      <input type="text" class="searchable-select-holder form-control hide" id="companyShow" disabled>
+    </div>
+    <div class="x-col">
+      <div class="labText">公司简称</div>
+      <input class="searchable-select-holder form-control" id="companyShortEdit" disabled>
+    </div>
+  </div>
+  <div class="x-row">
+    <div class="x-col">
+      <div class="labText">联系人1</div>
+      <input class="searchable-select-holder form-control" id="contractEdit" disabled>
+    </div>
+    <div class="x-col">
+      <div class="labText">联系人1电话</div>
+      <input class="searchable-select-holder form-control" id="contractPhone" disabled>
+    </div>
+    <div class="x-col">
+      <div class="labText">联系人2</div>
+      <input class="searchable-select-holder form-control" id="secondContact" disabled>
+    </div>
+    <div class="x-col">
+      <div class="labText">联系人2电话</div>
+      <input class="searchable-select-holder form-control" id="secondTelephone" disabled>
+    </div>
+  </div>
+  <div class="x-row">
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>执行人</div>
+      <input class="searchable-select-holder form-control" id="executeEdit">
+    </div>
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>联系电话</div>
+      <input class="searchable-select-holder form-control" id="executePhone">
+    </div>
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>生效开始日期</div>
+      <input id="startDate" class="inputStyle searchable-select-holder form-control" type="text" placeholder="请选择">
+    </div>
+    <div class="x-col">
+      <div class="labText">生效结束日期</div>
+      <input id="endDate" class="inputStyle searchable-select-holder form-control" type="text" placeholder="请选择">
+    </div>
+  </div>
+  <div class="x-row">
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>合同编号</div>
+      <input class="searchable-select-holder form-control" id="codeEdit">
+    </div>
+    <div class="x-col">
+      <div class="labText">终止理由</div>
+      <input class="searchable-select-holder form-control" id="remarkEdit">
+    </div>
+    <div class="x-col"></div>
+    <div class="x-col"></div>
+  </div>
+  <div class="x-row">
+    <div class="x-col">
+      <div class="labText">相关附件</div>
+      <div id="fileList"></div>
+      <div id="fileList_change">
+        <input type="file" multiple class="bgy-input uploadFile" id="fileAdd">
+      </div>
+      <div class="x-row row_bottom"></div>
+    </div>
+  </div>
+  <div style="display: none;">
+    <embed id="printFile" src="">
+  </div>
+  <div class="x-col">
+    <div style="margin-left: 30%">
+      <button type="button" class="btn" onclick="save()">保存</button>
+      <button type="button" class="btn" onclick="goBack()" style="margin-left: 40px">取消</button>
+    </div>
+  </div>
+</div>
+</div>
+<!-- 删除提示框 -->
+<div class="modal bs-example-modal-sm" id="deleteFile" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title title_dialog" id="deleteModalLabel">提示</h4>
+      </div>
+      <div class="modal-body">
+        是否删除该附件
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" onclick="deleteFileSure()">确定</button>
+        <button type="button" class="btn" data-dismiss="modal" style="background-color: #fff;color: #999999">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/integration-admin/plugins/jQuery.print.js"></script>
+<script src="/integration-admin/common/contract/contractEdit/contractEdit.js"></script>

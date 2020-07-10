@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" type="text/css" href="/integration-admin/plugins/layui/css/layui.css">
+  <link rel="stylesheet" type="text/css" href="/integration-admin/css/common.css">
+  <title>巡逻点扫码信息</title>
+  <style>
+    html,body{
+      overflow:auto;
+    }
+    .table-c {
+      font-family: verdana, arial, sans-serif;
+      color: #333333;
+      border-width: 1px;
+      border-color: #666666;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .table-c th {
+      border-width: 1px;
+      padding: 10px 20px;
+      border-style: solid;
+      border-color: #666666;
+      background-color: #dedede;
+    }
+
+    .table-c td {
+      border-width: 1px;
+      padding: 10px 20px;
+      border-style: solid;
+      border-color: #666666;
+      background-color: #ffffff
+    }
+  </style>
+</head>
+
+  <body>
+    <div style="min-width: 1000px;">
+      <h2 style="padding: 2%;">巡逻点扫码信息</h2>
+      <div class="x-row">
+        <div style="width: 70%;padding-left: 50px;">
+          <div class="x-row">
+            <div class="x-col">巡逻点名称：<span id="name_code"></span></div>
+          </div>
+          <div class="x-row">
+            <div class="x-col">当前状态：<span id="status_code"></span></div>
+          </div>
+          <div class="x-row">
+            <div class="x-col">所属区域：<span id="area_code"></span></div>
+          </div>
+          <div class="x-row">
+            <div class="x-col">所属项目：<span id="project_code"></span></div>
+          </div>
+          <div class="x-row">
+            <div class="x-col">巡逻点地址：<span id="address_code"></span></div>
+          </div>
+        </div>
+        <div style="width: 30%;margin-top:30px;">
+          <div id="qrcode"></div>
+        </div>
+      </div>
+      <div class="x-row" style="height: 5px;border-bottom:1px solid #ccc;width: 100%;"></div>
+      <div class="x-row">
+        <div style="width:100%;margin-left: 50px;">
+        <table border="1" class="table-c" cellspacing="0" cellpadding="0" id="table_code">
+        </table>
+        </div>
+      </div>
+    </div>
+  <script src="/integration-admin/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" language="JavaScript" src="/integration-admin/plugins/layui/layui.all.js"></script>
+    <script src="/integration-admin/common/common.js"></script>
+    <script src="/integration-admin/plugins/qrcode.js"></script>
+    <script>
+      $(document).ready(function () {
+        getInfo();
+        getQrcode()
+        renderTable();
+      })
+      function getQrcode() {
+        $('qrcode').html('')
+        var qrcode = new QRCode("qrcode", {
+          text: window.location.href,
+          width: 128,
+          height: 128,
+          colorDark: "#000000",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.H
+        });
+      }
+      function getInfo () {
+        // var objectsId = location.search.slice(1).split('&')[0].split('=')[1]
+        var pointId = location.search.slice(1).split('&')[0].split('=')[1]
+        var param = {
+          // objectsId: objectsId,
+          pointId: pointId
+        }
+        $.adapter_get(param, 'patrolPoint/pointTask', function (d) {
+          var data = d.data.point;
+          $("#name_code").html(data.name)
+          $("#address_code").html(data.address)
+          $("#project_code").html(data.projectName)
+          $("#status_code").html(data.statusName)
+          $("#area_code").html(data.areaName)
+        })
+      }
+      function renderTable(data) {
+        var columnsSet = [[
+          { field: 'id',type: 'numbers', width: '6%'},
+          {'title': '任务名称','field': 'name',  width: '23%'},
+          {'title': '执行人', 'field': 'dealPeople',  width: '23%'},
+          {'title': '最后完成时间', 'field': ' dealTime',  width: '24%'},
+          {'title': '处理结果', 'field': 'dealResult', width: '24%'}
+        ]]
+        layTable({
+          'url': 'patrolPoint/pointTask?'+  location.search.slice(1),
+          'param': {},
+          'tablecols': columnsSet,
+          'data': 'records'
+        }, '#table_code')
+      }
+    </script>
+  </body>
+</html>

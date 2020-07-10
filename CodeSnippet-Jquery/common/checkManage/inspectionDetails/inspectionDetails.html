@@ -1,0 +1,123 @@
+<style>
+  .computer_manage div.dataTables_info {
+      right: 600px;
+    }
+    .x-col {
+      max-width: 180px;
+    }
+    .btn_a {
+      color: #A9A6AB;
+      float: right;
+      cursor: pointer;
+      margin-right: 20px;
+    }
+    .btn_img {
+      float: right;
+      cursor: pointer;
+      padding-top: 3px;
+      margin-right: 2px;
+    }
+    .td_button_default {
+      color: #4D7CFE;
+    }
+    .btn_right {
+      margin-right: 20px;
+    }
+    .row_bottom {
+      margin-bottom: 10px;
+    }
+    /* 表格居中 */
+    .computer_manage .layui-table th,
+    .computer_manage .layui-table td {
+      text-align: center;
+    }
+    .diolag_title {
+      font-size: 16px;
+      color: #6a809d;
+      font-weight: 600;
+      line-height: 22px;
+    }
+    .subName {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+</style>
+<div class="computer_manage listPag">
+  <div class="contentHeader searchFrom">
+    <h3 class="title_style">检查详情</h3>
+    <div>
+      <div class="x-row row_bottom">
+          <div class="x-col">
+              <select class=" searchable-select-holder searchable" id="orgIdL">
+                  <option value="">请选择公司</option>
+              </select>
+          </div>
+        <div class="x-col">
+          <select class="searchable-select-holder" id="area2">
+            <option value="">请选择区域</option>
+          </select>
+        </div>
+        <div class="x-col">
+          <select class="searchable-select-holder" id="projListC">
+            <option value="">请选择项目</option>
+          </select>
+        </div>
+        <div class="x-col">
+            <select class="searchable-select-holder searchable form-control" id="classifyL"  >
+              <option value="">请选择分类</option>
+              <option value="1">客服</option>
+              <option value="2">绿化</option>
+              <option value="3">工程</option>
+              <option value="4">物管</option>
+              <option value="5">保洁</option>
+            </select>
+        </div>
+        <div class="x-col">
+          <button class="btn" onclick="submitForm()">查询</button>
+          <button class="btn noMargin" onclick="resetForm()">重置</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="contentTable">
+    <div style="height: 20px;padding-top: 15px;">
+      
+      <a  onclick="previewTable()" class="listAddBtn ml10">
+        <img  src="/integration-admin/images/viewTable.png"  alt="表格预览">
+        <span>表格预览</span>
+      </a>
+      <a  onclick="handleAdd()" class="listAddBtn bgy-add-btn">
+          <img  src="/integration-admin/images/add1.png"  alt="添加">
+          <span  >添加</span>
+        </a>
+    </div>
+    <table id="detailsTable" class="display table table-striped table-bordered" cellspacing="0" style="width:100%">
+    </table>
+  </div>
+  <!-- 删除提示框 -->
+  <div class="modal bs-example-modal-sm" id="delete" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">提示</h4>
+        </div>
+        <div class="modal-body">
+          是否删除
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" onclick="deleteSure()">确定</button>
+          <button type="button" class="btn" data-dismiss="modal" style="background-color: #fff;color: #999999">取消
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/html" id="barDemo">
+  <a class="td_button_default btn_right" onclick='update({{JSON.stringify(d)}})'>编辑</a>
+  <a class="td_button_default" onclick='deleteItem({{JSON.stringify(d)}})'>删除</a>
+</script>
+<script src="/integration-admin/common/checkManage/inspectionDetails/inspectionDetails.js"></script>

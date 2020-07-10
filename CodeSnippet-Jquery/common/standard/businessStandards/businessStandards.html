@@ -1,0 +1,210 @@
+<style>
+  .step {
+    display: inline-block;
+    margin-top: 15px;
+    margin-left: 17%;
+    margin-right: 10px;
+    height: 34px;
+    width: 42%;
+  }
+
+  .select_a {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .select_a::-ms-expand {
+    display: none;
+  }
+</style>
+<div class="contentHeader">
+  <div class="title_style">业务标准</div>
+  <div class="wrap-row">
+    <div class="wrap-col">
+      <select class="inputStyle searchable-select-holder orgList" id="orgList">
+        <option value="">请选择公司</option>
+      </select>
+    </div>
+    <div class="wrap-col">
+      <select class="inputStyle searchable-select-holder areaList" id="areaList">
+        <option value="">请选择区域</option>
+      </select>
+    </div>
+    <div class="wrap-col">
+      <select class="inputStyle searchable-select-holder serviceName" id="serviceName">
+        <option value="">请选择业务大类</option>
+        <option value="1">巡检</option>
+        <option value="2">维保</option>
+        <option value="4">检测</option>
+        <option value="7">综合巡逻</option>
+        <option value="8">绿化巡逻</option>
+        <option value="9">保洁巡逻</option>
+      </select>
+    </div>
+    <div class="wrap-col">
+      <input class="inputStyle searchable-select-holder standardName" id="standardName" placeholder="标准名称">
+    </div>
+    <div class="wrap-col">
+      <input type="text" class="inputStyle searchable-select-holder createByName" placeholder="创建人">
+    </div>
+    <div class="wrap-col"></div>
+    <div class="wrap-col"></div>
+    <div class="wrap-col"></div>
+    <div class="wrap-col"></div>
+    <div class="wrap-col">
+        <div class="btn-col">
+            <button class="btn fr" onclick="resetForm()">重置</button>
+            <button class="btn fr" onclick="submitForm()">查询</button>
+            
+        </div>
+    </div>
+  </div>
+</div>
+<div class="contentTable" style="position: relative;">
+  <img src="/integration-admin/images/export.png"
+    style="width: 16px;height: 13px;margin-top: 28px;right: 75px;position: absolute;"
+    onclick="businessStandardsExports()">
+  <img class="bgy-add-btn" src="/integration-admin/images/add.png"
+    style="width: 16px;height: 13px;margin-top: 28px;right: 130px;position: absolute;" onclick="add()">
+  <span class="export"
+    style="float: right;color: #A9A6AB;margin-right: 31px; font-size: 12px;margin-top: 26px;cursor: pointer;"
+    onclick="businessStandardsExports()">
+    导出
+  </span>
+  <span class="addEvent bgy-add-btn"
+    style="float: right;color: #A9A6AB;margin-right: 30px;margin-top: 26px;font-size: 12px;cursor: pointer;"
+    onclick="add()">
+    添加
+  </span>
+  <table id="businessStandardsTable" class="display table table-striped table-bordered" cellspacing="0" width="100%">
+  </table>
+</div>
+<!-- 添加模态窗 -->
+<div class="modal" id="businessStandardsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">添加标准</h4>
+      </div>
+      <div class="modal-body" style="position: relative;overflow: auto">
+        <div class="list-group">
+          <div class="panel-body">
+            <div class="x-row row_bottom">
+              <div class="x-col">
+                <div class="mustInput" style="float:right;width: 96%">
+                  <select class="inputStyle searchable-select-holder areaList" id="orgList1">
+                    <option value="">请选择公司</option>
+                  </select>
+                </div>
+              </div>
+              <div class="x-col">
+                <div class="mustInput" style="float:right;width: 96%">
+                  <select class="inputStyle searchable-select-holder areaList" id="areaList1">
+                    <option value="">请选择区域</option>
+                  </select>
+                </div>
+              </div>
+              <div class="x-col">
+                <div class="mustInput" style="float:right;width: 96%">
+                  <span class="searchable-select-caret"></span>
+                  <select class="inputStyle searchable-select-holder serviceName2 select_a" id="serviceName2">
+                    <option value="">请选择服务性质</option>
+                    <option value="1" data-id="1">内部</option>
+                    <option value="2" data-id="2">第三方</option>
+                  </select>
+                </div>
+              </div>
+              <div class="x-col">
+                <div class="mustInput" style="float:right;width: 96%">
+                  <span class="searchable-select-caret"></span>
+                  <select class="inputStyle searchable-select-holder serviceName1 select_a" id="serviceName1">
+                    <option value="">请选择业务大类</option>
+                    <option value="1">巡检</option>
+                    <option value="2">维保</option>
+                    <option value="4">检测</option>
+                    <option value="7">综合巡逻</option>
+                    <option value="8">绿化巡逻</option>
+                    <option value="9">保洁巡逻</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="x-row">
+              <div class="x-col" style="max-width: 249px;">
+                <div class="mustInput" style="float:right;width: 96%">
+                  <select class="inputStyle searchable-select-holder" id="typeisName">
+                    <option value="">请选择分类名称</option>
+                  </select>
+                </div>
+              </div>
+              <div class="x-col">
+                <div class="mustInput" style="float:right;width: 96%">
+                  <input class="inputStyle searchable-select-holder" id="workTime" type="number" placeholder="标准工时(分钟)">
+                </div>
+              </div>
+              <div class="x-col">
+                <div class="mustInput" style="float:right;width: 96%">
+                  <input class="inputStyle searchable-select-holder standardName1" id="standardName1"
+                    placeholder="标准名称">
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="x-row row_bottom">
+              <div class="x-col">
+                <div class="labText">
+                  <span style="color:red">*</span>
+                  标准详情</div>
+              </div>
+              <div class="x-col">
+                <button type="button" class="btn" id="addSteps">添加步骤</button>
+              </div>
+              <div class="x-col">
+                <button type="button" class="btn" id="delStep">删除步骤</button>
+              </div>
+            </div>
+            <div class="x-row row_bottom">
+              <div class="x-col" id="addStep">
+                <input class="step" type="text" placeholder="" id="step">
+                <input type="checkbox" name="accord" class="accord">
+                <label class="lables">提供支持依据</label>
+              </div>
+            </div>
+            <div style="margin-left: 40%;">
+              <button type="button" class="btn" onclick="save()">保存</button>
+              <button type="button" class="btn" data-dismiss="modal" style="margin-left: 40px">取消</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 删除提示框 -->
+<div class="modal bs-example-modal-sm" id="delete" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">提示</h4>
+      </div>
+      <div class="modal-body">
+        是否删除
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" onclick="deleteSure()">确定</button>
+        <button type="button" class="btn" data-dismiss="modal" style="background-color: #fff;color: #999999">取消
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/html" id="barDemo">
+  <a class="td_button_default btn_right" onclick='update({{JSON.stringify(d)}})'>编辑</a>
+  <a class="td_button_default" onclick='deleteItem({{JSON.stringify(d)}})'>删除</a>
+</script>
+<script src="/integration-admin/common/standard/businessStandards/businessStandards.js"></script>

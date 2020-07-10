@@ -1,0 +1,122 @@
+<style>
+  .computer_manage div.dataTables_info {
+    right: 600px;
+  }
+
+  .x-col {
+    max-width: 180px;
+  }
+  .addPage .btn{margin-right: 5px}
+  .btn_a {
+    color: #A9A6AB;
+    float: right;
+    cursor: pointer;
+    margin-right: 20px;
+  }
+
+  .btn_img {
+    float: right;
+    cursor: pointer;
+    padding-top: 3px;
+    margin-right: 2px;
+  }
+
+  .td_button_default {
+    color: #4D7CFE;
+  }
+
+  .btn_right {
+    margin-right: 20px;
+  }
+
+  .row_bottom {
+    margin-bottom: 10px;
+  }
+  .addPage .x-col .labText,.addPage .labText{width: 50px;}
+  .addPage .x-col > .searchable-select-holder,.addPage .x-col .searchable-select{
+    width:-moz-calc(100% - 60px);
+    width:-webkit-calc(100% - 60px);
+    width: calc(100% - 60px);
+    margin-right:0;
+  }
+  /* 表格居中 */
+  .computer_manage .layui-table th,
+  .computer_manage .layui-table td {
+    text-align: center;
+  }
+
+  .title_style {
+    font-size: 16px;
+    color: #778CA2;
+    font-weight: 600;
+    line-height: 22px;
+    font-family: PingFangSC-Medium;
+    letter-spacing: 0;
+    margin-bottom: 30px;
+  }
+
+  .diolag_title {
+    font-size: 16px;
+    color: #778CA2;
+    font-weight: 600;
+    line-height: 22px;
+  }
+
+</style>
+<div class="computer_manage addPage">
+  <div class="contentHeader">
+    <div class="header">
+        <h3 class="title_style">添加分类</h3>
+        <div class="btnGroup">
+          <button type="button" class="btn addBtn" onclick="save()">保存</button>
+          <button type="button" class="btn noMargin" onclick="handleGoBack()">返回</button>
+        </div>
+    </div>
+    <div class="x-row row_bottom">
+      <div class="x-col">
+        <div class="labText"><span style="color:red">*</span>公司</div>
+        <select class="searchable-select-holder searchable" id="org3">
+          <option value="">请选择公司</option>
+        </select>
+      </div>
+      <div class="x-col">
+        <div class="labText"><span style="color:red">*</span>区域</div>
+        <select class="searchable-select-holder searchable" id="area3">
+          <option value="">请选择区域</option>
+        </select>
+      </div>
+      <div class="x-col">
+        <div class="labText"><span style="color:red">*</span>项目</div>
+        <select class="searchable-select-holder searchable" id="project3">
+          <option value="">请选择项目</option>
+        </select>
+      </div>
+      <div class="x-col">
+        <div class="labText"><span style="color:red">*</span>分类名</div>
+        <select class="searchable-select-holder searchable" id="kind" >
+          <option value="">请选择</option>
+          <option value="1">客服</option>
+          <option value="2">绿化</option>
+          <option value="3">工程</option>
+          <option value="4">物管</option>
+          <option value="5">保洁</option>
+        </select>
+      </div>
+    </div>
+    <div class="x-row row_bottom">
+      <div class="x-col">
+        <div class="labText"> </div>
+        <button type="button" class="btn" onclick="addKind()">添加子类</button>
+      </div>
+    </div>
+    <div id="addKind"></div>
+  </div>
+</div>
+
+
+</div>
+<script type="text/html" id="barDemo">
+  <a class="td_button_default btn_right" onclick='update({{JSON.stringify(d)}})'>编辑</a>
+  <a class="td_button_default" onclick='deleteItem({{JSON.stringify(d)}})'>删除</a>
+</script>
+<script src="/integration-admin/common/checkManage/inspectionClassification/inspectionClassificatAdd.js"></script>

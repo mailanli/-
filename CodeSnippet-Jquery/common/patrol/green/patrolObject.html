@@ -1,0 +1,125 @@
+<style>
+
+  .x-col {
+    max-width: 180px;
+  }
+    .diolag_title {
+      font-size: 16px;
+      color: #6a809d;
+      font-weight: 600;
+      line-height: 22px;
+    }
+    .btn_a {
+      color: #A9A6AB;
+      float: right;
+      cursor: pointer;
+      margin-right: 20px;
+    }
+    .btn_img {
+      float: right;
+      cursor: pointer;
+      padding-top: 3px;
+      margin-right: 2px;
+    }
+    .td_button_default {
+      color: #4D7CFE;
+    }
+    .btn-right {
+      margin-right: 20px;
+    }
+    .row_bottom {
+      margin-bottom: 10px;
+    }
+    /* 表格居中 */
+    .contentTable .layui-table th,
+    .contentTable .layui-table td {
+      text-align: center;
+    }
+</style>
+<div>
+  <div class="contentHeader">
+    <h3 class="title_style">绿化巡逻查询</h3>
+    <div>
+      <div class="x-row">
+          <div class="x-col">
+              <select class="inputStyle searchable-select-holder" id="org">
+                <option value="">请选择公司</option>
+              </select>
+            </div>
+        <div class="x-col">
+          <!-- 区域 -->
+          <select class="inputStyle searchable-select-holder" id="area">
+              <option value="">请选择区域</option>
+          </select>
+        </div>
+        <div class="x-col">
+          <!-- 项目 -->
+          <select class="inputStyle searchable-select-holder" id="projList">
+              <option value="">请选择项目</option>
+          </select>
+        </div>
+        <div class="x-col">
+          <input class="searchable-select-holder" id="patrolName" placeholder="巡逻名">
+        </div>
+        <div class="x-col">
+          <button class="btn sbtn fr" onclick="resetSearch()">重置</button>
+          <button class="btn sbtn fr" onclick="submitForm()">查询</button>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="contentTable">
+     <div style="height: 20px;padding-top: 15px;">
+          <span class="btn_a  bgy-export-btn" onclick="exprotFile()">导出</span>
+          <img class="btn_img bgy-export-btn" src="/integration-admin/images/export.png" onclick="exprotFile()" alt="导出">
+          <span class="btn_a bgy-add-btn" onclick="add()">添加</span>
+          <img class="btn_img bgy-add-btn" src="/integration-admin/images/add.png" onclick="add()" alt="添加">
+      </div>
+    <table id="computerRoomTable" class="display table table-striped table-bordered" cellspacing="0" width="100%">
+    </table>
+  </div>
+</div>
+<!-- 删除提示框 -->
+<div class="modal bs-example-modal-sm" id="delete" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title diolag_title" id="myModalLabel">提示</h4>
+      </div>
+      <div class="modal-body">
+        是否删除
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" onclick="deletePatrolObject()">确定</button>
+        <button type="button" class="btn" data-dismiss="modal" style="background-color: #fff;color: #999999">取消
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 禁用启用提示框 -->
+<!-- <div class="modal bs-example-modal-sm" id="statuschange" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title diolag_title" id="myModalLabel">提示</h4>
+      </div>
+      <div class="modal-body">
+        是否禁用
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" onclick="changeStatusSure()">确定</button>
+        <button type="button" class="btn" data-dismiss="modal" style="background-color: #fff;color: #999999">取消
+        </button>
+      </div>
+    </div>
+  </div>
+</div> -->
+<script type="text/html" id="caozuo">
+  <a class="td_button_default btn-right" onclick='update({{d.id}})'>编辑</a>
+  <a class="td_button_default btn-right" onclick='findDetail({{d.id}})'>查看详情</a>
+  <a class="td_button_default" onclick='deleteItem({{d.id}})'>删除</a>
+</script>
+<script src="/integration-admin/common/patrol/green/patrolObject.js"></script>

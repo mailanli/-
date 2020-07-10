@@ -1,0 +1,65 @@
+<style>
+  .computer_manage div.dataTables_info {
+      right: 600px;
+    }
+    .x-col {
+      max-width: 180px;
+      margin-right: 8px;
+    }
+    .x-row{position: relative;}
+  .searchFrom .btn{margin-right: 5px}
+    .btn_a {
+      color: #A9A6AB;
+      float: right;
+      cursor: pointer;
+      margin-right: 20px;
+    }
+    .btn_img {
+      float: right;
+      cursor: pointer;
+      padding-top: 3px;
+      margin-right: 2px;
+    }
+    .td_button_default {
+      color: #4D7CFE;
+    }
+    .btn_right {
+      margin-right: 20px;
+    }
+    .row_bottom {
+      margin-bottom: 10px;
+    }
+    .contentTable{text-align: center;}
+    #downFileContent{ position: relative; margin: auto; background:url(/integration-admin/images/qrcodeBg.jpg) no-repeat; width: 300px; height: 427px;}
+    .qrcode{ position: absolute; text-align: center; top:50px; left: 44px; width: 214px; height: 214px; background-color: #fff; padding: 13px;  }
+    #downFileContent .text{ text-align: center; color: #fff;  width:214px; margin: auto ;}
+    #title{font-size: 33px; padding-top: 289px;}
+    #address{font-size: 14px;padding-top: 30px;}
+    .downFileText{text-align: left; padding-top: 25px; width: 350px; margin: auto;}
+</style>
+<div class="computer_manage addPage">
+  <div class="contentHeader searchFrom">
+      <div class="header">
+          <h3 class="title_style">二维码</h3>
+          <div class="btnGroup">
+            <button type="button"  id="downLoadBtn" class="btn noMargin"  onclick="downLoad()">下载原图</button>
+            <button type="button" class="btn noMargin" onclick="handleGoBack()">返回</button>
+          </div>
+        </div>
+        
+  </div>
+  <div class="contentTable" >
+    <div id="downFileContent">
+        <div class="qrcode" id="qrcode" ></div>
+        <div id="title" class="text"></div>
+        <div id="address" class="text"></div>
+    </div>
+    <div class="downFileText">
+      <div><span>名称：</span><span id="name"></span></div>
+      <div><span>地址：</span><span id="address1"></span></div>
+
+    </div>
+  </div>
+</div>
+
+<script src="/integration-admin/common/patrol/patrolDetailQRCodes.js"></script>

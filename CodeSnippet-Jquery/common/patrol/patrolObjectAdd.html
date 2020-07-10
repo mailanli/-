@@ -1,0 +1,154 @@
+<style>
+  select.tableSelect {
+    width: 82%;
+    padding: 0px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    min-height: 30px;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    display: block;
+  }
+  #selectModal .layui-input-block {
+    margin-left: 0px;
+  }
+  .searchable-select {
+    /* width: 65%; */
+  }
+  .icon_div {
+    position: relative;
+  }
+  .icon_position {
+    position: absolute;
+    right: 3%;
+    top: 10px;
+  }
+    .row_bottom {
+      margin-bottom: 10px;
+    }
+ </style>
+<div class="contentHeader">
+  <ul id="myTab" class="nav nav-tabs" style="margin-top: 15px">
+    <li class="active">
+      <a id="name">
+        线路维护
+      </a>
+    </li>
+  </ul>
+  <div style="padding-top: 10px;margin-left: 30px;">
+    <div style="position: relative">
+      <div class="x-row row_bottom">
+        <div class="x-col star">
+          <input type="hidden" id="patrolId" />
+          <select class="searchable-select-holder searchable" id="area">
+            <option value="">请选择区域...</option>
+          </select>
+        </div>
+        <div class="x-col star">
+          <select class="searchable-select-holder searchable" id="project">
+            <option value="">请选择项目...</option>
+          </select>
+        </div>
+        <div class="x-col"></div>
+        <div class="x-col"></div>
+      </div>
+      <div class="x-row row_bottom">
+        <div class="x-col star">
+          <select class="searchable-select-holder searchable" id="objectType">
+            <option value="">请选择巡逻类型...</option>
+            <option value="2">绿化巡逻</option>
+            <option value="3">保洁巡逻</option>
+            <option value="1">综合巡逻</option>
+            <!-- <option value="2">点巡逻</option> -->
+          </select>
+        </div>
+        <div class="x-col star">
+          <select class="searchable-select-holder searchable" id="timeSeries">
+            <option value="">请选择时序要求...</option>
+            <option value="1">是</option>
+            <option value="0">否</option>
+          </select>
+        </div>
+        <div class="x-col"></div>
+        <div class="x-col"></div>
+      </div>
+      <div class="x-row">
+        <div id="businessType1" class="x-col row_bottom">
+          <div class="star">
+            <select class="searchable-select-holder searchable" id="buseType">
+              <option value="">请选择业务标准...</option>
+            </select>
+          </div>
+        </div>
+        <div class="x-col"></div>
+        <div class="x-col"></div>
+        <div class="x-col"></div>
+      </div>
+      <div class="x-row row_bottom">
+        <div class="x-col icon_div star">
+          <input type="text" class="searchable-select-holder" id="pointIds" data-d='' onfocus="selectPoint()" placeholder="请查找巡逻点">
+          <i class="layui-icon icon_position" onclick="selectPoint()">&#xe615;</i>
+        </div>
+        <div class="x-col"></div>
+        <div class="x-col"></div>
+        <div class="x-col"></div>
+      </div>
+      <div class="x-row row_bottom">
+        <div class="x-col star">
+          <input type="text" class="searchable-select-holder" id="patrolName" placeholder="巡逻名">
+        </div>
+        <div class="x-col"></div>
+        <div class="x-col"></div>
+        <div class="x-col"></div>
+      </div>
+      <div style="margin-left: 40%">
+        <button type="button" class="btn" onclick="patrolObjectSave()">保存</button>
+        <button type="button" class="btn" onclick="goBack()">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 选择模态窗 -->
+<div class="modal" id="selectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title title_style" id="selectModalLabel">巡逻点扫码任务选择</h4>
+            </div>
+            <div class="modal-body" style="position: relative">
+                <table id="selectPatrolPointTable"  lay-filter="test"   width="100%">
+                </table>
+                <div style="margin-left: 40%;margin-top: 40px;">
+                    <button type="button" class="btn" onclick="submit_points()">确认</button>
+                    <button type="button" class="btn" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 删除提示框 -->
+<div class="modal bs-example-modal-sm" id="deletePoint" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">提示</h4>
+            </div>
+            <div class="modal-body">
+                是否删除
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info">确定</button>
+                <button type="button" class="btn" data-dismiss="modal" style="background-color: #fff;color: #999999">取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/integration-admin/common/patrol/patrolObjectAdd.js"></script>

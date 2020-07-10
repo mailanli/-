@@ -1,0 +1,31 @@
+<style>
+  .patrol-look-form {
+    margin: 50px 0 0 100px;
+  }
+
+  .p{
+    line-height: 40px;
+    height: 40px;
+  }
+  #patrol-object-details p {
+    padding: 5px 0;
+  }
+</style>
+<div class="contentHeader listPag">
+    <div class="header">
+        <h3 class="title_style">巡逻对象详情</h3>
+        <div class="btnGroup">
+          <button type="button" class="btn noMargin" onclick="goBack()">关闭</button>
+        </div>
+    </div>
+  <!-- <h1 class="title_style">巡逻对象详情</h1> -->
+  <form action="" class="patrol-look-form">
+    <ul  id="patrol-object-details">
+    </ul>
+    <p>电子地图</p>
+    <div id="patrolMap" style="margin: 15px 15px 0 15px;width: 900px;height: 300px;"></div>
+  </form>
+</div>
+
+<script src="/integration-admin/plugins/qrcode.js"></script>
+<script src="/integration-admin/common/patrol/clean/patrolObjectDetails.js"></script>

@@ -1,0 +1,55 @@
+<div class="contentHeader">
+    <div class="title_style">数据仪表</div>
+    <div class="x-row">
+        <div class="x-col">
+            <select id="orgList" style="max-width: 190px;">
+            </select>
+        </div>
+        <div class="x-col">
+            <select id="areaList" style="max-width: 190px;">
+            </select>
+        </div>
+        <div class="x-col" style="max-width: 190px;">
+            <select id="proList">
+            </select>
+        </div>
+        <div class="x-col"></div>
+        <div class="x-col"></div>
+        <div class="x-col"></div>
+    </div>
+</div>
+<div style="width: 100%;display: flex;">
+    <div class="flexDiv">
+        <img src="/integration-admin/images/equenment.png">
+        <label class="flexLabel" id="count">0</label>
+        <span style="color: #98A9BC;font-size: 14px">设备总数</span>
+    </div>
+    <div class="flexDiv">
+        <img src="/integration-admin/images/stand.png">
+        <label class="flexLabel" id="important">0</label>
+        <span style="color: #98A9BC;font-size: 14px">业务标准数</span>
+    </div>
+    <div class="flexDiv">
+        <img src="/integration-admin/images/taskNumber.png">
+        <label class="flexLabel" id="online">0</label>
+        <span style="color: #98A9BC;font-size: 14px">任务总数</span>
+    </div>
+    <div class="flexDiv">
+        <img src="/integration-admin/images/tasks.png">
+        <label class="flexLabel" id="status">0</label>
+        <span style="color: #98A9BC;font-size: 14px">任务完成比例</span>
+    </div>
+    <div class="flexDiv" style="margin-right:0px;">
+        <img src="/integration-admin/images/mangent.png">
+        <label class="flexLabel" id="scrap">0</label>
+        <span style="color: #98A9BC;font-size: 14px">有效合同数</span>
+    </div>
+</div>
+<div id="map" style="height: 100%;margin-top:15px;"></div>
+<script type="text/javascript"
+    src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+<script type="text/javascript"
+    src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+<script src="/integration-admin/common/main/index.js"></script>
+
+</html>

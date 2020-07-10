@@ -1,0 +1,142 @@
+<style>
+  .modal {
+    top: 150px
+  }
+
+  .labText {
+    width: 100%;
+    text-align: left;
+  }
+
+  #fileList p {
+    margin-bottom: 10px;
+  }
+
+  #fileList_change {
+    display: block;
+  }
+
+  #fileList button {
+    margin-right: 10px;
+  }
+
+  .filename {
+    margin-right: 5px;
+    min-width: 120px;
+    display: inline-block;
+  }
+
+  p {
+    line-height: 32px;
+  }
+
+  .fl {
+    float: left;
+    width: 88%;
+  }
+
+  .form-control {
+    width: 100%;
+  }
+
+  .title_dialog {
+    font-size: 16px;
+    color: #6a809d;
+    font-weight: 600;
+    line-height: 22px;
+  }
+</style>
+<div class="contentHeader">
+  <h1 id="title" class="title_style">供应商新增</h1>
+  <div class="x-row">
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>供应商名称</div>
+      <input class="searchable-select-holder form-control" id="companyName_change">
+    </div>
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>统一社会信用代码</div>
+      <input placeholder="18位阿拉伯数字或大写英文字母" class="searchable-select-holder form-control" onkeyup="toLower()"
+        id="companyCode_change">
+    </div>
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>公司简称</div>
+      <input class="searchable-select-holder form-control" id="companyShortName_change">
+    </div>
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>公司地址</div>
+      <input class="searchable-select-holder form-control" id="address_change">
+    </div>
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>合同业务</div>
+      <select class="searchable-select-holder searchable" id="contractType">
+        <option value="">请选择...</option>
+        <option value="1">消防</option>
+        <option value="2">电梯</option>
+      </select>
+    </div>
+  </div>
+  <div class="x-row">
+    <div class="x-col">
+      <div class="labText">联系人1</div>
+      <input class="searchable-select-holder form-control" id="person_change">
+    </div>
+    <div class="x-col">
+      <div class="labText">联系人1电话</div>
+      <input class="inputStyle searchable-select-holder form-control" id="phone_change">
+    </div>
+    <div class="x-col">
+      <div class="labText">联系人2</div>
+      <input class="searchable-select-holder form-control" id="secondContact">
+    </div>
+    <div class="x-col">
+      <div class="labText">联系人2电话</div>
+      <input class="inputStyle searchable-select-holder form-control" id="secondTelephone">
+    </div>
+    <div class="x-col"></div>
+  </div>
+  <div class="x-row">
+    <div class="x-col">
+      <div class="labText">相关附件</div>
+      <div class="hide fl" id="fileList"></div>
+      <div id="fileList_change">
+        <input type="file" multiple class="bgy-input uploadFile" id="file_change">
+      </div>
+    </div>
+  </div>
+  <div class="x-row" style="margin-top: 20px;">
+    <div class="x-col">
+      <div style="margin-left: 30%" id="btn_save">
+        <button type="button" class="btn" onclick="save()">保存</button>
+        <button type="button" class="btn" style="margin-left: 40px" onclick="goBack()">取消</button>
+      </div>
+      <div style="margin-left: 30%;display:none;" id="btn_cancel">
+        <button type="button" class="btn" style="margin-left: 40px" onclick="goBack()">取消</button>
+      </div>
+    </div>
+  </div>
+  <div style="display: none;">
+    <embed id="printIframe" src="">
+  </div>
+
+</div>
+<!-- 删除提示框 -->
+<div class="modal bs-example-modal-sm" id="deleteFile" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title title_dialog" id="deleteModalLabel">提示</h4>
+      </div>
+      <div class="modal-body">
+        是否删除该附件
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" onclick="deleteFileSure()">确定</button>
+        <button type="button" class="btn" data-dismiss="modal" style="background-color: #fff;color: #999999">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/integration-admin/plugins/jQuery.print.js"></script>
+<script src="/integration-admin/common/contract/companyManage/companyChange.js"></script>

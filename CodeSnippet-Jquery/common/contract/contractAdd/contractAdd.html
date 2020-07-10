@@ -1,0 +1,144 @@
+<style>
+  .modal {
+    top: 150px
+  }
+
+  .labText {
+    width: 100%;
+    text-align: left;
+    line-height: 40px;
+  }
+
+  .row_bottom {
+    margin-bottom: 20px;
+  }
+
+  .diolag_title {
+    font-size: 16px;
+    color: #6a809d;
+    font-weight: 600;
+    line-height: 22px;
+  }
+
+  .form-control {
+    width: 100%;
+  }
+</style>
+<div class="contract-add-form contentHeader">
+  <h3 id="title" class="title_style">新增合同</h3>
+  <div class="x-row row_bottom">
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>所属公司</div>
+      <select class="searchable-select-holder searchable" id="orgAdd">
+        <option value="">请选择</option>
+      </select>
+    </div>
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>所属区域</div>
+      <select class="searchable-select-holder searchable" id="areaAdd">
+        <option value="">请选择</option>
+      </select>
+    </div>
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>所属项目</div>
+      <select class="searchable-select-holder searchable" id="projectAdd">
+        <option value="">请选择</option>
+      </select>
+    </div>
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>合同名称</div>
+      <input class="searchable-select-holder" id="nameAdd">
+    </div>
+  </div>
+  <div class="x-row row_bottom">
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>业务分类</div>
+      <select class="searchable-select-holder searchable" id="typeAdd">
+        <option value="">请选择</option>
+      </select>
+    </div>
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>合同业务</div>
+      <select class="searchable-select-holder searchable" id="contractType">
+        <option value="">请选择...</option>
+        <option value="1">消防</option>
+        <option value="2">电梯</option>
+      </select>
+    </div>
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>业务供应商</div>
+      <select class=" searchable-select-holder searchable" id="companyAdd">
+        <option value="">请选择</option>
+      </select>
+    </div>
+    <div class="x-col">
+      <div class="labText">公司简称</div>
+      <input class="searchable-select-holder form-control" id="companyShortAdd" disabled>
+    </div>
+  </div>
+  <div class="x-row row_bottom">
+    <div class="x-col">
+      <div class="labText">联系人1</div>
+      <input class="searchable-select-holder form-control" id="contractAdd" disabled>
+    </div>
+    <div class="x-col">
+      <div class="labText">联系人1电话</div>
+      <input class="searchable-select-holder form-control" id="contractPhone" disabled>
+    </div>
+    <div class="x-col">
+      <div class="labText">联系人2</div>
+      <input class="searchable-select-holder form-control" id="secondContact" disabled>
+    </div>
+    <div class="x-col">
+      <div class="labText">联系人2电话</div>
+      <input class="searchable-select-holder form-control" id="secondTelephone" disabled>
+    </div>
+
+  </div>
+  <div class="x-row row_bottom">
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>执行人</div>
+      <input class="searchable-select-holder" id="executeAdd">
+    </div>
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>执行人电话</div>
+      <input class="searchable-select-holder" id="executePhone">
+    </div>
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>生效开始日期</div>
+      <input id="startDate" class="searchable-select-holder" type="text" placeholder="请选择开始日期" readonly>
+    </div>
+    <div class="x-col">
+      <div class="labText">生效结束日期</div>
+      <input id="endDate" class="searchable-select-holder" type="text" placeholder="请选择结束日期" readonly>
+    </div>
+  </div>
+  <div class="x-row row_bottom">
+    <div class="x-col">
+      <div class="labText"><span style="color:red">*</span>合同编号</div>
+      <input class="searchable-select-holder" id="codeAdd">
+    </div>
+    <div class="x-col">
+      <div class="labText">终止理由</div>
+      <input class="searchable-select-holder form-control" disabled id="remarkAdd">
+    </div>
+    <div class="x-col">
+    </div>
+    <div class="x-col">
+    </div>
+  </div>
+  <div class="x-row row_bottom">
+    <div class="x-col">
+      <div class="labText">相关附件</div>
+      <input type="file" multiple class="bgy-input uploadFile" id="fileAdd">
+    </div>
+  </div>
+  <div class="x-col">
+    <div style="margin-left: 35%">
+      <button type="button" class="btn" onclick="save()">保存</button>
+      <button type="button" class="btn" style="margin-left: 40px" onclick="goBack()">取消</button>
+    </div>
+  </div>
+</div>
+</div>
+<script src="/integration-admin/common/contract/contractAdd/contractAdd.js"></script>

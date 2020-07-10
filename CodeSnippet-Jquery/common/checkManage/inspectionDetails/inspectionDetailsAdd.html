@@ -1,0 +1,133 @@
+<style>
+  .computer_manage div.dataTables_info {
+      right: 600px;
+    }
+    .x-col {
+      max-width: 180px;
+      margin-right: 8px;
+    }
+    .x-row{position: relative;}
+  .searchFrom .btn{margin-right: 5px}
+    .btn_a {
+      color: #A9A6AB;
+      float: right;
+      cursor: pointer;
+      margin-right: 20px;
+    }
+    .btn_img {
+      float: right;
+      cursor: pointer;
+      padding-top: 3px;
+      margin-right: 2px;
+    }
+    .td_button_default {
+      color: #4D7CFE;
+    }
+    .btn_right {
+      margin-right: 20px;
+    }
+    .row_bottom {
+      margin-bottom: 10px;
+    }
+    /* 表格居中 */
+    .computer_manage .layui-table th,
+    .computer_manage .layui-table td {
+      text-align: center;
+    }
+    .diolag_title {
+      font-size: 16px;
+      color: #6a809d;
+      font-weight: 600;
+      line-height: 22px;
+    }
+    .subName {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .sub,textarea{
+      width:-moz-calc(100% - 65px);
+	    width:-webkit-calc(100% - 65px);
+      width: calc(100% - 65px);
+    }
+</style>
+<div class="computer_manage addPage">
+  <div class="contentHeader searchFrom">
+      <div class="header">
+          <h3 class="title_style">添加详情</h3>
+          <div class="btnGroup">
+            <button type="button" class="btn addBtn" onclick="save()">保存</button>
+            <button type="button" class="btn noMargin" onclick="handleGoBack()">返回</button>
+          </div>
+      </div>
+      <div class="x-row row_bottom "  style="width:80%">
+          <div class="x-col">
+            <div class="labText"><span style="color:red">*</span>公司</div>
+            <select class="searchable-select-holder searchable" id="org3">
+              <option value="">请选择公司</option>
+            </select>
+          </div>
+          <div class="x-col">
+            <div class="labText"><span style="color:red">*</span>区域</div>
+            <select class="searchable-select-holder searchable" id="area3">
+              <option value="">请选择区域</option>
+            </select>
+          </div>
+          <div class="x-col">
+            <div class="labText"><span style="color:red">*</span>项目</div>
+            <select class="searchable-select-holder searchable" id="project3">
+              <option value="">请选择项目</option>
+            </select>
+          </div>
+          <div class="x-col"  style="margin-right: 0;">
+            <div class="labText"><span style="color:red">*</span>分类名</div>
+            <select class="searchable-select-holder searchable form-control" id="kind"  onchange="changeKind(event)">
+              <option value="">请选择分类</option>
+              <option value="1">客服</option>
+              <option value="2">绿化</option>
+              <option value="3">工程</option>
+              <option value="4">物管</option>
+              <option value="5">保洁</option>
+            </select>
+          </div>
+        </div>
+        <div id="descriptions" style="width:80%"></div>
+        <div class="line"></div>
+        <div class="x-row row_bottom" style="width:80%">
+          <div class=" title"><img src="/integration-admin/images/mark.png" /><span >品质检查</span></div>
+        </div>
+        <div class="x-row row_bottom" style="width:80%">
+          <div class="x-col" style="width:80%">
+            <div class="labText"><span style="color:red;">*</span>分值</div>
+            <input 
+            type="text" 
+            class="searchable-select-holder" 
+            id="grade" 
+            placeholder=""
+            maxlength="5"
+            onchange="fixScore(event)">
+          </div>
+          <div class="x-col"></div>
+          <div class="x-col"></div>
+        </div>
+        <div class="x-row row_bottom" style="width:80%">
+          <div class="labText"><span style="color:red;">*</span>检查标准 </div>
+          <textarea cols="70" rows="10" id="checkStandard" placeholder="请输入描述"></textarea>
+        </div>
+        <div class="x-row row_bottom" style="width:80%">
+          <div class="labText">效果标准</div>
+          <textarea cols="70" rows="10" id="effectStandard" placeholder="请输入描述"></textarea>
+          <!-- <input type="text"  id="" placeholder="请输入描述" class="searchable-select-holder sub"/> -->
+          <!-- <textarea cols="70" rows="10"></textarea> -->
+        </div>
+        <div class="x-row" id="continueBox">
+            <div class="labText">&nbsp;</div>
+            <div>
+                <input type="checkbox" id="lxtj" onclick="checkFun(this)">
+                <span>连续录入&nbsp;</span>
+            </div>
+        </div>
+  </div>
+</div>
+
+<script src="/integration-admin/common/checkManage/inspectionDetails/inspectionDetailsAdd.js"></script>
