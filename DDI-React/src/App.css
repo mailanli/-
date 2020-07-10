@@ -1,0 +1,114 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.left{float: left;}
+.TabOpera{padding-top:12px;}
+.spanR{padding-right:8px; display: inline-block;}
+.TextRight{text-align: right;}
+
+.ant-btn{margin-right:8px !important;margin-bottom:12px !important;}
+.ant-tabs-bar{margin-bottom: 0 !important; margin-top: 8px;}
+.MainContent{ padding: 24px; background-color: #fff;  min-Height: 360px; }
+a{display: inline-block;}
+/*步骤条*/
+.proBar{width:100%; height:36px; line-height:36px; border:none;} 
+.proPic01{width:22px !important ; background:url(./images/proBar01.png) no-repeat;}
+.proPic02{background:url(./images/proBar05.png) repeat-x;}
+.proPic03{width:31px !important ; background:url(./images/proBar02.png) no-repeat;}
+.proPic03a{width:31px !important ; background:url(./images/proBar02a.png) no-repeat;}
+.proPic04{background:url(./images/proBar06.png) repeat-x;}
+.proPic05{width:23px !important ; background:url(./images/proBar04.png) no-repeat;}
+.proPic04a{width:23px !important ; background:url(./images/proBar04a.png) no-repeat;}
+.proPic06{width:31px !important ; background:url(./images/proBar03.png) no-repeat;}
+.proBar .active span{background-color:#666; color:#fff;}
+.proBar .badge-grey{margin-bottom:3px; margin-right:3px; background-color:#e4e4e4;}
+.proBar{color:#e4e4e4;}
+.proBar .active .badge-grey{background-color:#666;}
+.proBar  .active{color:#666;}
+.proBar a .badge{background-color:#666;}
+.badge {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 1;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #777777;
+  border-radius: 10px;
+}
+.proBar ,.proBar  td{border:0; border-collapse:collapse;}
+.ConMain{padding:24px 12px;}
+.hideLoyerBox{display: block;}
+.btnGroup{text-align: center;}
+
+.panel-body li a{color:#333; line-height:35px; display:block; padding:0 8px;}
+.panel-body li a:hover{background-color:#eee; color:#333;}
+.panel-body  .active a{background-color:#108ee9; color:#fff;}
+.noCon{ text-align:center; color:#999; padding:10% 0;}
+.noCon i{font-size:45px;}
+.CardCon{position: relative;}
+.CardTitBtnGroup i{padding:0 8px; font-size:18px; }
+.CardTitBtnGroup{position: absolute; width: 100px; top: -55px; right:-20px;}
+.questionIcon{color:#ccc; }
+.addDataBox{position:relative; width:120px}
+.addDataBox .btn,.addDataBox .btn:hover{background-color:#108ee9 !important; color:#fff !important; padding:9px 24px; height:auto; width:100%; text-align:center;}
+.addDataBox .arrow{color:#108ee9; font-size:24px; position:absolute; z-index:10001; bottom:-13px; left:45%;}
+.liLeft{ margin:0; padding:0;}
+.win60{width: 60px;}
+.w90{width: 90%;}
+.liLeft li{float:left; margin:0 8px; list-style:none;}
+.icon-question-sign{padding-left: 12px;}
+.right{float:right;}
+.blue{color:#00a4db !important;}
+.red{color:#ff2300 !important;}
+.red1{color:fe6d56 !important;}
+.green{color:#4bc45d !important;}
+.yellow{color:#ff9d02 !important;}
+.ItemTreeSider{background-color:#c8dfe3;}
+.EditRuleCon{border:1px solid #eee; background-color:#fff; position: relative; height:650px;}
+.EditRuleCon .content{ padding:12px;}
+.logo {background:url(./images/logo.png) no-repeat; width:auto; height:49px; display:block; background-size:contain; background-position:center;}
+.headerCon{padding:0 8px;}
+.headerCon a{padding:0 3px;}
+.EditRuleBtn{display: block !important; width:100px !important; height: auto !important; border:1px solid #eee !important; backgroung-color:#fff; padding:8px !important; position: absolute !important; }
+.EditRuleBtn .icon{width:46px; height: 46px; display: block; background-size: 100%; margin: auto;}
+.addfile01{background:url("./images/addfile.png") no-repeat;}
+.addcsv{background:url("./images/addcsv.png") no-repeat;}
+.addxml{background:url("./images/addxml.png") no-repeat;}
+.addexcel{background:url("./images/addexcel.png") no-repeat;}
+.adddata{background:url("./images/adddata.png") no-repeat;}
+.btn1{top:40%; left: 10%;}
+.btn2{top:10%; left: 50%;}
+.btn3{top:30%; left: 50%;}
+.btn4{top:50%; left: 50%;}
+.btn5{top:70%; left: 50%;}
+.btn6{top:40%; left: 60%;}
